@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { ChakraProvider, ThemeProvider } from '@chakra-ui/react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HeartDiseaseForm from './components/Form';
+import Home from './components/Home';
+import Recommendations from './components/Recommendations';
+import Navbar from './components/Navbar';
+import Statistics from './components/Statistics';
+import Effects from "./components/Effects"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<HeartDiseaseForm />} />
+        <Route path="/recommendations" element={<Recommendations />} />
+        <Route path='/stats' element={<Statistics/>}/>
+        <Route path='/effects' element={<Effects/>}/>
+      </Routes>
+    </BrowserRouter>
+    </ChakraProvider>  
   );
 }
 
